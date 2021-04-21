@@ -6,7 +6,7 @@
 
 # Load library, prepare and load MNIST datasets----------------
 set.seed(1000)
-ibrary(keras) #load keras library 
+library(keras) #load keras library 
 #[MNIST DATASET](http://yann.lecun.com/exdb/mnist/) # use MNIST Database
  
 mnist <- dataset_mnist() 
@@ -49,3 +49,7 @@ model %>%
 
 #save the model for future use
 save_model_tf(object = model, filepath = "P:/msc_statistic_2019_2020/2020_September-December_Sem-4/image-classification/models")
+
+#Can be reloaded as 
+reloaded_model <- load_model_tf("P:/msc_statistic_2019_2020/2020_September-December_Sem-4/image-classification/models")
+all.equal(predict(model, mnist$test$x), predict(reloaded_model, mnist$test$x))
